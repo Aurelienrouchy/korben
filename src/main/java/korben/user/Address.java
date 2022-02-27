@@ -1,4 +1,4 @@
-package korben;
+package korben.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
