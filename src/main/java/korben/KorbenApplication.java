@@ -1,16 +1,19 @@
 package korben;
 
-import korben.provider.Provider;
-import korben.provider.ProviderName;
-import korben.provider.ProviderRepository;
+import korben.positionInfos.Address;
+import korben.positionInfos.Country;
+import korben.positionInfos.PositionInfo;
 import korben.user.*;
+import org.bson.types.ObjectId;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.geo.Point;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,14 +50,15 @@ public class KorbenApplication {
 					"Paris"
 			);
 
-			Position pos = new Position(12.345643, 90.2345345);
 			PositionInfo pos_info = new PositionInfo(
+					new ObjectId("sdfgdfbgdfs"),
 					"Fr-fr",
 					new Country(
 							"France",
 							"tt",
 							"3"
-					)
+					),
+					address
 			);
 			File file = new File(
 					3,
@@ -71,27 +75,23 @@ public class KorbenApplication {
 					files,
 					"url blabla"
 			);
-			int[] i = {};
+			String[] interested_in = {Gender.FEMALE.getValue()};
 
 			User user = new User(
 					29,
 					45,
-					9,
-					"14-05-1992",
+					LocalDate.of(1992, Month.MAY, 14),
 					LocalDateTime.now(),
 					true,
 					(short) 30,
-					Gender.MALE,
-					0,
-					i,
-					"none",
+					Gender.MALE.getValue(),
+					interested_in,
 					"Aurelien",
-					pos,
+					new Point(-73.99756, 40.73083),
 					pos_info,
-					"I'm hsdfgdbrre",
+					"Bio de Aurelien, nah nah nah",
 					"Paris",
-					false,
-					photo
+					true
 			);
 
 			repository.insert(user);
