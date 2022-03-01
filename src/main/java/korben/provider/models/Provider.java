@@ -1,4 +1,4 @@
-package korben.provider;
+package korben.provider.models;
 
 import com.mongodb.lang.Nullable;
 import lombok.Data;

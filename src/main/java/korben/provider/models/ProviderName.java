@@ -1,4 +1,4 @@
-package korben.provider;
+package korben.provider.models;
 
 public enum ProviderName {
     FACEBOOK("facebook"), GOOGLE("google");
@@ -10,6 +10,6 @@ public enum ProviderName {
     }
 
     public String getValue() {
-        return this.value;
+        return value;
     }
 }

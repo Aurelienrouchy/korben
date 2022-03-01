@@ -1,9 +1,13 @@
 package korben;
 
+import com.mongodb.lang.Nullable;
 import korben.positionInfos.models.Address;
 import korben.positionInfos.models.Country;
 import korben.positionInfos.models.PositionInfo;
 import korben.user.*;
+import korben.user.models.Gender;
+import korben.user.models.User;
+import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class KorbenApplication {
@@ -24,9 +29,10 @@ public class KorbenApplication {
 		SpringApplication.run(KorbenApplication.class, args);
 	}
 
-//	@Bean
-//	CommandLineRunner runner(UserRepository repository) {
-////		return args -> {
+	@Bean
+	CommandLineRunner runner(UserRepository repository) {
+		return args -> {
+
 ////			Provider provider = new Provider(
 ////				ProviderName.GOOGLE,
 ////				"1234567890",
@@ -75,27 +81,31 @@ public class KorbenApplication {
 //					files,
 //					"url blabla"
 //			);
-//			String[] interested_in = {Gender.FEMALE.getValue()};
+//			Gender[] interested_in = {Gender.FEMALE, Gender.FEMALE};
 //
 //			User user = new User(
 //					29,
 //					45,
-//					LocalDate.of(1992, Month.MAY, 14),
+//					LocalDate.of(1994, Month.MAY, 24),
 //					LocalDateTime.now(),
 //					true,
-//					(short) 30,
-//					Gender.MALE.getValue(),
+//					(short) 40,
+//					Gender.MALE,
 //					interested_in,
-//					"Aurelien",
-//					new Point(-73.99756, 40.73083),
-//					pos_info,
-//					"Bio de Aurelien, nah nah nah",
+//					"",
+//					"Mathieu",
+//					new Point(-73.99776, 40.73034),
+//					"FR-fr",
+//					"Bio de Mathieu, nah nah nah",
 //					"Paris",
 //					true
 //			);
-//
+
+			Optional<User> user = repository.getById(new ObjectId("621e03fc84728001ba8494b3"));
+
+			System.out.println(user);
 //			repository.insert(user);
-//
-//		};
-//	}
+
+		};
+	}
 }

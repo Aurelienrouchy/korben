@@ -1,9 +1,13 @@
 package korben.user;
 
 import korben.provider.ProviderService;
+import korben.user.mapper.UserMapper;
+import korben.user.models.User;
+import korben.user.models.dto.UserDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,8 +23,16 @@ public class UserController {
     }
 
     @GetMapping("users")
-    public List<User> getAllUsers() {
-        return userService.getUsers();
+    public List<UserDTO> getAllUsers() {
+        UserMapper mapper = new UserMapper();
+        List<User> users = userService.getUsers();
+        List<UserDTO> usersDTO = new ArrayList<>();
+
+        for (int i = 0; i < users.size(); i++) {
+            usersDTO.add(mapper.toDTO(users.get(i)));
+        }
+
+        return usersDTO;
     }
 
 //    @PostMapping( "user")

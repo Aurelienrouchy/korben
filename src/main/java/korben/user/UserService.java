@@ -1,7 +1,9 @@
 package korben.user;
 
-import korben.provider.Provider;
+import korben.provider.models.Provider;
 import korben.provider.ProviderService;
+import korben.user.models.User;
+import korben.user.models.dto.UserDTO;
 import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

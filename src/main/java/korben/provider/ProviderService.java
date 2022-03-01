@@ -1,5 +1,6 @@
 package korben.provider;
 
+import korben.provider.models.Provider;
 import korben.util.Errors.errorsTypes.RessourceNotFoundException;
 import org.springframework.stereotype.Service;
 

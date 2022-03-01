@@ -1,4 +1,4 @@
-package korben.user;
+package korben.user.models;
 
 import com.mongodb.lang.Nullable;
 
@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Document(collection="users")
@@ -26,7 +27,7 @@ public class User {
     private int age_filter_min;
 
     @NonNull
-    private LocalDateTime birth_date;
+    private LocalDate birth_date;
 
     @NonNull
     private LocalDateTime create_date;
@@ -38,10 +39,10 @@ public class User {
     private short distance_filter;
 
     @NonNull
-    private String gender;
+    private Gender gender;
 
     @NonNull
-    private String[] interested_in;
+    private List<Gender> interested_in;
 
     @Nullable
     private String custom_gender;
@@ -53,7 +54,7 @@ public class User {
     private Point pos;
 
     @NonNull
-    private PositionInfo pos_info;
+    private String timezone;
 
     @NonNull
     private String bio;
@@ -64,7 +65,7 @@ public class User {
     @NonNull
     private boolean snow_gender_on_profile;
 
-    public User(int age_filter_max, int age_filter_min, LocalDateTime birth_date, LocalDateTime create_date, boolean discoverable, short distance_filter, String gender, String[] interested_in, String custom_gender, String name, Point pos, PositionInfo pos_info, String bio, String city, boolean snow_gender_on_profile) {
+    public User(int age_filter_max, int age_filter_min, LocalDate birth_date, LocalDateTime create_date, boolean discoverable, short distance_filter, Gender gender, List<Gender> interested_in, String custom_gender, String name, Point pos, String timezone, String bio, String city, boolean snow_gender_on_profile) {
         this.age_filter_max = age_filter_max;
         this.age_filter_min = age_filter_min;
         this.birth_date = birth_date;
@@ -76,7 +77,7 @@ public class User {
         this.custom_gender = custom_gender;
         this.name = name;
         this.pos = pos;
-        this.pos_info = pos_info;
+        this.timezone = timezone;
         this.bio = bio;
         this.city = city;
         this.snow_gender_on_profile = snow_gender_on_profile;
