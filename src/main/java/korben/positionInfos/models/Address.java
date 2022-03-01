@@ -1,4 +1,4 @@
-package korben.positionInfos;
+package korben.positionInfos.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

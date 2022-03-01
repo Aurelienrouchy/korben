@@ -1,9 +1,6 @@
 package korben.provider;
 
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Repository;
+import korben.util.Errors.RessourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,12 +15,8 @@ public class ProviderService {
     }
 
     public Optional<Provider> findByProviderId(String id) {
-        Provider provider = providerRepository.findByProviderId(id);
-
-        if (provider == null) {
-            return Optional.empty();
-        }
-        return Optional.of(provider);
+        System.out.println("id is " +id);
+        return Optional.ofNullable(providerRepository.findByProviderId(id).orElseThrow(() -> new RessourceNotFoundException("Provider " + id + "not found")));
     }
 
     public Provider insert(Provider provider) {

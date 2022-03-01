@@ -21,15 +21,4 @@ public class Provider {
 
     @Nullable
     private String userId;
-
-    public Provider(ProviderName name, String providerId, String userId) {
-        this.name = name;
-        this.providerId = providerId;
-        this.userId = userId;
-    }
-
-    public Provider(ProviderName name, String providerId) {
-        this.name = name;
-        this.providerId = providerId;
-    }
 }

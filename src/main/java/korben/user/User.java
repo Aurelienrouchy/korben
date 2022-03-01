@@ -2,7 +2,7 @@ package korben.user;
 
 import com.mongodb.lang.Nullable;
 
-import korben.positionInfos.PositionInfo;
+import korben.positionInfos.models.PositionInfo;
 import lombok.Data;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
@@ -26,7 +26,7 @@ public class User {
     private int age_filter_min;
 
     @NonNull
-    private LocalDate birth_date;
+    private LocalDateTime birth_date;
 
     @NonNull
     private LocalDateTime create_date;
@@ -64,7 +64,7 @@ public class User {
     @NonNull
     private boolean snow_gender_on_profile;
 
-    public User(int age_filter_max, int age_filter_min, LocalDate birth_date, LocalDateTime create_date, boolean discoverable, short distance_filter, String gender, String[] interested_in, String custom_gender, String name, Point pos, PositionInfo pos_info, String bio, String city, boolean snow_gender_on_profile) {
+    public User(int age_filter_max, int age_filter_min, LocalDateTime birth_date, LocalDateTime create_date, boolean discoverable, short distance_filter, String gender, String[] interested_in, String custom_gender, String name, Point pos, PositionInfo pos_info, String bio, String city, boolean snow_gender_on_profile) {
         this.age_filter_max = age_filter_max;
         this.age_filter_min = age_filter_min;
         this.birth_date = birth_date;
@@ -74,23 +74,6 @@ public class User {
         this.gender = gender;
         this.interested_in = interested_in;
         this.custom_gender = custom_gender;
-        this.name = name;
-        this.pos = pos;
-        this.pos_info = pos_info;
-        this.bio = bio;
-        this.city = city;
-        this.snow_gender_on_profile = snow_gender_on_profile;
-    }
-
-    public User(int age_filter_max, int age_filter_min, LocalDate birth_date, LocalDateTime create_date, boolean discoverable, short distance_filter, String gender, String[] interested_in, String name, Point pos, PositionInfo pos_info, String bio, String city, boolean snow_gender_on_profile) {
-        this.age_filter_max = age_filter_max;
-        this.age_filter_min = age_filter_min;
-        this.birth_date = birth_date;
-        this.create_date = create_date;
-        this.discoverable = discoverable;
-        this.distance_filter = distance_filter;
-        this.gender = gender;
-        this.interested_in = interested_in;
         this.name = name;
         this.pos = pos;
         this.pos_info = pos_info;

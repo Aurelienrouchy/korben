@@ -2,15 +2,12 @@ package korben.user;
 
 import korben.provider.Provider;
 import korben.provider.ProviderService;
-import korben.util.Errors.UserExistException;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -42,6 +39,7 @@ public class UserService {
     public ResponseEntity<User> connection(String id) {
         Optional<Provider> provider = providerService.findByProviderId(id);
 
+        System.out.println("isEmpty " + provider);
         if (provider.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
