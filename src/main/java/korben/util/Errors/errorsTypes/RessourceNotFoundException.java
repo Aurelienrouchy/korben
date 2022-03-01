@@ -1,4 +1,4 @@
-package korben.util.Errors;
+package korben.util.Errors.errorsTypes;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
